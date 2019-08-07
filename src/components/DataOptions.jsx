@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Cities(props) {
+function DataOptions(props) {
   return <div>
     {props.array.map(
       (item, i) => <div key={i} onClick={props.handleClick.bind(this, item)}>
@@ -10,4 +10,4 @@ function Cities(props) {
   </div>;
 }
 
-export default Cities;
+export default DataOptions;
