@@ -23,10 +23,13 @@ html {
   margin-left: 1.5rem;
 }
 
-.dropdown__item:hover {
+.dropdown__item {
   width: calc(100% - 1.5rem);
-  background-color: darkgray;
   cursor: pointer;
+}
+
+.dropdown__item:hover {
+  background-color: #ddd;
 }
 
 nav ul {
