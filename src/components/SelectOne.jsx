@@ -46,7 +46,7 @@ function SelectOne() {
     setSelected(city);
   };
 
-  return <div ref={node}>
+  return <div ref={node} className="formWrapper">
     <form>
       <input
         type='search'
@@ -54,14 +54,17 @@ function SelectOne() {
         value={selected || text}
         onChange={handleChange}
       />
+      {active && !selected && <Dropdown array={filtered.slice(0, 8)} handleClick={handleClick} />}
+    </form>
+    <form>
       <input
         type='search'
         placeholder='Select...'
         value={selected || text}
         onChange={handleChange}
       />
+      {active && !selected && <Dropdown array={filtered.slice(0, 8)} handleClick={handleClick} />}
     </form>
-    {active && !selected && <Dropdown array={filtered.slice(0, 8)} handleClick={handleClick} />}
   </div>
 }
 

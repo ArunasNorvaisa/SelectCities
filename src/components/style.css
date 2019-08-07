@@ -13,9 +13,34 @@ html {
   margin: 0 auto;
 }
 
+.formWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dropdown {
+  margin-left: 1.5rem;
+}
+
+.dropdown__item:hover {
+  width: calc(100% - 1.5rem);
+  background-color: darkgray;
+  cursor: pointer;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav li {
+  display: block;
+  margin: 0 auto;
+}
+
 form {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column nowrap;
   justify-content: center;
 }
 
