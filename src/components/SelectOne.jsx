@@ -18,7 +18,7 @@ function SelectOne() {
       document.removeEventListener('mousedown', handleClickOutside);
     }
 
-    return () => {
+    return function () {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [active]);
