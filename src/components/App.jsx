@@ -4,9 +4,11 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import SelectOne from "./SelectOne";
 import SelectTwo from "./SelectTwo";
 
+import './style.css';
+
 function App() {
   return <BrowserRouter>
-    <div>
+    <div className="container">
       <nav>
         <ul>
           <li>

@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import DataOptions from "./DataOptions";
+import Dropdown from "./Dropdown";
 import { cities } from "../data/data";
+
+import './style.css';
 
 function SelectOne() {
   const node = useRef();
@@ -24,7 +26,7 @@ function SelectOne() {
   }, [active]);
 
   const handleChange = function ({target}) {
-    const filteredCities = cities.filter(item => item.toLowerCase().includes(target.value.toLowerCase()));
+    const filteredCities = cities.filter(item => item.toLowerCase().startsWith(target.value.toLowerCase()));
     setActive(true);
     setSelected('');
     setText(target.value);
@@ -52,8 +54,14 @@ function SelectOne() {
         value={selected || text}
         onChange={handleChange}
       />
+      <input
+        type='search'
+        placeholder='Select...'
+        value={selected || text}
+        onChange={handleChange}
+      />
     </form>
-    {active && <DataOptions array={filtered.slice(0, 8)} handleClick={handleClick} />}
+    {active && !selected && <Dropdown array={filtered.slice(0, 8)} handleClick={handleClick} />}
   </div>
 }
 

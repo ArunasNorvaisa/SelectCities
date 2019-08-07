@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DataOptions(props) {
+function Dropdown(props) {
   return <div>
     {props.array.map(
       (item, i) => <div key={i} onClick={props.handleClick.bind(this, item)}>
@@ -10,4 +10,4 @@ function DataOptions(props) {
   </div>;
 }
 
-export default DataOptions;
+export default Dropdown;
