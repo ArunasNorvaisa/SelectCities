@@ -1,0 +1,15 @@
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  input {
+    width: 40rem;
+    height: 5rem;
+    font-size: 2.5rem;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 1.2rem;
+  }
+}
+

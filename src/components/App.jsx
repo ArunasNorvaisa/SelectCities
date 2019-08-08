@@ -1,10 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
-import SelectOne from './SelectOne';
-import SelectTwo from './SelectTwo';
+import Selection from './Selection';
 
-import './style.css';
+import './App.css';
 
 function App() {
   return <BrowserRouter>
@@ -19,8 +18,8 @@ function App() {
           </li>
         </ul>
       </nav>
-      <Route path='/SelectOne/' component={SelectOne} />
-      <Route path='/SelectTwo/' component={SelectTwo} />
+      <Route path='/SelectOne/' component={Selection} />
+      <Route path='/SelectTwo/' component={Selection} />
     </div>
   </BrowserRouter>;
 }

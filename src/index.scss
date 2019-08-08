@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  font-size: 62.5%;
+}
+
+nav {
+  ul {
+    display: flex;
+
+    li {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+

@@ -1,0 +1,16 @@
+.dropdown {
+  margin-left: 1.1rem;
+  border: 0.1rem solid #ddd;
+  border-radius: 0.6rem;
+  width: calc(100% - 2.1rem);
+
+  .dropdown__item {
+    cursor: pointer;
+    padding: 0.6rem 0.3rem;
+
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+}
+
