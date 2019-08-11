@@ -8,24 +8,43 @@ import './Dropdown.scss';
 
 function Dropdown(props) {
   const [active, setActive] = useState(false);
-  const [filtered, setFiltered] = useState([...cities]);
-  const [arrayToDisplay, setArrayToDisplay] = useState([...cities]);
-  const [selectedEntries] = useState([]);
   const [text, setText] = useState('');
+  const [entries, setEntries] = useState(arrayToObject(cities));
 
-  const node = useRef();
+  function arrayToObject(array) {
+    const obj = {};
+    array.forEach(item => obj[item] = false);
+    return obj;
+  }
 
-  useEffect(function () {
+  const filterEntries = condition => {
+    const arr = [];
+    for (let item in entries) {
+      if (entries[item] === condition) arr.push(item);
+    }
+    return arr;
+  };
+
+  const filterFunction = val => val.toLowerCase().includes(text.toLowerCase());
+  // As an alternative, we can use function that looks for cities that starts with search
+  // query, as opposed to including it.
+  // const filterFunction = val => val.toLowerCase().startsWith(target.value.toLowerCase());
+
+  const entriesToSelect = () => filterEntries(false).filter(filterFunction);
+  const selectedEntries = () => filterEntries(true);
+
+  useEffect(() => {
     if (active) {
       document.addEventListener('mousedown', handleClickOutside);
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
     }
-
-    return function () {
+    return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [active]);
+
+  const node = useRef();
 
   const handleClickOutside = ({target}) => {
     if (node.current.contains(target)) {
@@ -34,51 +53,48 @@ function Dropdown(props) {
     }
     // click outside
     setActive(false);
+    if (!props.multiple) setText(selectedEntries()[0]);
   };
 
   const handleChange = ({target}) => {
-    const filterFunction = val => val.toLowerCase().includes(target.value.toLowerCase());
-    // As an alternative, we can use below function that looks for cities that starts with search
-    // query, as opposed to including it.
-    // const filterFunction = val => val.toLowerCase().startsWith(target.value.toLowerCase());
-    const filteredCities = arrayToDisplay.filter(filterFunction);
     setText(target.value);
-    setFiltered(filteredCities);
   };
 
   const handleSelection = city => {
-    if (props.multiple) {
-      setArrayToDisplay(arrayRemove(arrayToDisplay, city));
-      selectedEntries.push(city);
-      setText('');
-    } else setText(city);
+    const newEntries = {...entries};
+    if (props.multiple) setText('');
+    else {
+      if (selectedEntries().length > 0) newEntries[selectedEntries()[0]] = false;
+      setText(city);
+    }
+    newEntries[city] = true;
+    setEntries(newEntries);
     setActive(false);
-    setFiltered(arrayToDisplay);
   };
 
-/*  const arrayRemove = (arr, index) => {
-    console.log('L59 arr.length ===', arr.length);
-    arr.splice(index, 1);
-    return arr;
-  };*/
+  const handleOnFocus = () => {
+    setActive(true);
+    setText('');
+  };
 
-  const arrayRemove = (arr, value) => arr.filter(item => item !== value);
+  const deleteItem = city => {
+    setEntries({...entries, [city]: false});
+  };
 
   return <div ref={node} className="formWrapper">
     <form>
       <div className="formWrapper__input">
-        {selectedEntries.length > 0 && props.multiple && <SelectedItems array={selectedEntries} />}
+        {props.multiple && <SelectedItems array={selectedEntries()} deleteItem={deleteItem} />}
         <input
           type='search'
           placeholder='Select...'
           value={text}
           onChange={handleChange}
-          onFocus={() => setActive(true)}
+          onFocus={handleOnFocus}
         />
       </div>
-      {active && <DropdownMenu array={filtered} handleClick={handleSelection} />}
+      {active && <DropdownMenu array={entriesToSelect()} handleClick={handleSelection} />}
     </form>
-
   </div>
 }
 
