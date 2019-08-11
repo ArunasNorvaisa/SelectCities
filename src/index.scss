@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap&subset=latin-ext');
+
 * {
   box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
 }
 
 html {
@@ -10,10 +13,12 @@ html {
 nav {
   ul {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
     li {
       display: block;
-      margin: 0 auto;
+      margin: 1rem;
     }
   }
 }

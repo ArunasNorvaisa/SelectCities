@@ -6,9 +6,9 @@ import './Selection.scss';
 
 function Selection() {
 
-  return <div className="formWrapper">
-    <Dropdown />
-    <Dropdown />
+  return <div className="selectionWrapper">
+    <Dropdown multiple={false} />
+    <Dropdown multiple={true} />
   </div>
 }
 

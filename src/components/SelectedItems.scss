@@ -1,0 +1,28 @@
+.selected {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    font-size: 1.7rem;
+    margin: 0.5rem;
+    padding: 0.7rem;
+    background-color: #ddd;
+    border-radius: 1rem;
+  }
+}
+
+.btn {
+
+  &__cancel {
+    border: none;
+  }
+}
+
+.icon {
+
+  &__delete {
+    height: 1.7rem;
+    width: 1.7rem;
+    margin-top: 0.2rem;
+  }
+}

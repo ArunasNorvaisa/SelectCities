@@ -11,15 +11,19 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to='/SelectOne/'>Select One</Link>
+            <Link to='/SelectOne/'>Selection #1</Link>
           </li>
           <li>
-            <Link to='/SelectTwo/'>Select Two</Link>
+            <Link to='/SelectTwo/'>Selection #2</Link>
+          </li>
+          <li>
+            <Link to='/SelectThree/'>Selection #3</Link>
           </li>
         </ul>
       </nav>
       <Route path='/SelectOne/' component={Selection} />
       <Route path='/SelectTwo/' component={Selection} />
+      <Route path='/SelectThree/' component={Selection} />
     </div>
   </BrowserRouter>;
 }
