@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './SelectedItems.scss';
-import delete_icon from '../icons/cancel.svg';
+import delete_icon from '../icons/Cancel.svg';
 
 function SelectedItems(props) {
 

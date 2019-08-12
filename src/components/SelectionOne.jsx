@@ -3,13 +3,13 @@ import React from 'react';
 import Dropdown from "./Dropdown";
 
 import './Selection.scss';
+import {cities} from '../data/Data';
 
-function Selection() {
+function SelectionOne() {
 
   return <div className="selectionWrapper">
-    <Dropdown multiple={false} />
-    <Dropdown multiple={true} />
+    <Dropdown multiple={false} data={cities} />
   </div>
 }
 
-export default Selection;
+export default SelectionOne;

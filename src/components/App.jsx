@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
-import Selection from './Selection';
+import SelectionOne from './SelectionOne';
+import SelectionMultiple from './SelectionMultiple';
 
 import './App.css';
 
@@ -11,19 +12,15 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to='/SelectOne/'>Selection #1</Link>
+            <Link to='/SelectOne/'>Select one</Link>
           </li>
           <li>
-            <Link to='/SelectTwo/'>Selection #2</Link>
-          </li>
-          <li>
-            <Link to='/SelectThree/'>Selection #3</Link>
+            <Link to='/SelectMultiple/'>Select few</Link>
           </li>
         </ul>
       </nav>
-      <Route path='/SelectOne/' component={Selection} />
-      <Route path='/SelectTwo/' component={Selection} />
-      <Route path='/SelectThree/' component={Selection} />
+      <Route path='/SelectOne/' component={SelectionOne} />
+      <Route path='/SelectMultiple/' component={SelectionMultiple} />
     </div>
   </BrowserRouter>;
 }

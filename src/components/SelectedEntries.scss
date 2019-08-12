@@ -1,0 +1,11 @@
+.selectedEntries {
+  position: absolute;
+  bottom: 10vh;
+
+  &__item {
+    font-size: 1.7rem;
+    margin: 0.2rem;
+    padding: 0.2rem;
+    background-color: #ddd;
+  }
+}

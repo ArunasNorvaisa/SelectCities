@@ -2,18 +2,18 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import DropdownMenu from "./DropdownMenu";
 import SelectedItems from "./SelectedItems";
-import { cities } from "../data/data";
+import SelectedEntries from "./SelectedEntries";
 
 import './Dropdown.scss';
 
 function Dropdown(props) {
   const [active, setActive] = useState(false);
   const [text, setText] = useState('');
-  const [entries, setEntries] = useState(arrayToObject(cities));
+  const [entries, setEntries] = useState(arrayToObject(props.data));
 
-  function arrayToObject(array) {
+  function arrayToObject(array, condition = false) {
     const obj = {};
-    array.forEach(item => obj[item] = false);
+    array.forEach(item => obj[item] = condition);
     return obj;
   }
 
@@ -42,6 +42,7 @@ function Dropdown(props) {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
+    // eslint-disable-next-line
   }, [active]);
 
   const node = useRef();
@@ -95,6 +96,7 @@ function Dropdown(props) {
       </div>
       {active && <DropdownMenu array={entriesToSelect()} handleClick={handleSelection} />}
     </form>
+    {selectedEntries().length > 0 && <SelectedEntries data={selectedEntries()} />}
   </div>
 }
 
