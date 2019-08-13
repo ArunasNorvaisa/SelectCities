@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
-import SelectionOne from './SelectionOne';
-import SelectionMultiple from './SelectionMultiple';
+import Dropdown from './Dropdown';
+import {cities} from '../data/Data';
 
 import './App.css';
 
@@ -19,8 +19,14 @@ function App() {
           </li>
         </ul>
       </nav>
-      <Route path='/SelectOne/' component={SelectionOne} />
-      <Route path='/SelectMultiple/' component={SelectionMultiple} />
+      <Route
+        path='/SelectOne/'
+        render={props => <Dropdown {...props} multiple={false} data={cities} />}
+      />
+      <Route
+        path='/SelectMultiple/'
+        render={props => <Dropdown {...props} multiple={true} data={cities} />}
+      />
     </div>
   </BrowserRouter>;
 }
